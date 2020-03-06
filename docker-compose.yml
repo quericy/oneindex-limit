@@ -1,14 +1,13 @@
 # docker-compose.yml
 version: "3"
 services:
-  oneindex:
+  oneindex-limit:
+    container_name: oneindex-limit-container
     image: quericy/oneindex-limit
+    restart: always
     environment:
     - REFRESH_TOKEN=0/120 * * * *
     - REFRESH_CACHE=*/30 * * * *
-    # - DISABLE_CRON=true
-    # - SSH_PASSWORD=root
-    # - TZ=Asia/Shanghai
     volumes:
     - ./config:/var/www/html/config
     - ./cache:/var/www/html/cache

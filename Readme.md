@@ -4,4 +4,4 @@
 
 > 本项目为 [SomeBottle/OneIndex](https://github.com/SomeBottle/OneIndex) docker 镜像。
 
-> 镜像构建参考:[TimeBye/oneinde](https://github.com/TimeBye/oneindex)
+> 镜像构建基于:[richarvey/nginx-php-fpm](https://gitlab.com/ric_harvey/nginx-php-fpm)
