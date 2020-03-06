@@ -2,7 +2,7 @@ FROM richarvey/nginx-php-fpm
 
 COPY docker-entrypoint.sh /
 
-RUN git clone https://github.com/SomeBottle/OneIndex.git /var/www/html && \
+RUN mkdir -p /tmp/code && git clone https://github.com/SomeBottle/OneIndex.git /tmp/code && cp -a /tmp/code/* /var/www/html && \
     ssh-keygen -A
 
 # env params
