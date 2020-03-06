@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# timezone
-ln -sf /usr/share/zoneinfo/${TZ:-"Asia/Shanghai"} /etc/localtime
-echo ${TZ:-"Asia/Shanghai"} > /etc/timezone
-
-# sshd
-if [ -n "${SSH_PASSWORD}" ];then
-    mkdir -p /var/run/sshd
-    echo root:${SSH_PASSWORD} | chpasswd
-    sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
-    /usr/sbin/sshd
-fi
-
 # crontab
 if [ -z $DISABLE_CRON ];then
     REFRESH_TOKEN=${REFRESH_TOKEN:-"0 * * * *"}
@@ -23,12 +11,4 @@ if [ -z $DISABLE_CRON ];then
     crond
 fi
 
-# custom nginx config
-if [ -f /var/www/html/config/nginx-custom.conf ];then
-    cp -f /var/www/html/config/nginx-custom.conf /etc/nginx/conf.d/default.conf
-fi
-
-sed -i "s|listen 80|listen ${PORT:-80}|" /etc/nginx/conf.d/default.conf
-chown -R www-data:www-data /var/www/html/cache
-chown -R www-data:www-data /var/www/html/config
-php-fpm & nginx '-g daemon off;'
+bash /start.sh

@@ -2,7 +2,7 @@
 version: "3"
 services:
   oneindex:
-    image: setzero/oneindex
+    image: quericy/oneindex-limit
     environment:
     - REFRESH_TOKEN=0/120 * * * *
     - REFRESH_CACHE=*/30 * * * *
