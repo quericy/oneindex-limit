@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# timezone
+ln -sf /usr/share/zoneinfo/${TZ:-"Asia/Shanghai"} /etc/localtime
+echo ${TZ:-"Asia/Shanghai"} > /etc/timezone
+
 # crontab
 if [ -z $DISABLE_CRON ];then
     REFRESH_TOKEN=${REFRESH_TOKEN:-"0/60 * * * *"}
