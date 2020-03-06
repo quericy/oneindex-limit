@@ -11,10 +11,5 @@ if [ -z $DISABLE_CRON ];then
     crond
 fi
 
-# env params
-GIT_REPO=${GIT_REPO:-"github.com/SomeBottle/OneIndex/"}
-GIT_EMAIL=${GIT_EMAIL:-"test@test.com"}
-GIT_USERNAME=${GIT_USERNAME:-"test_user"}
-PHP_MEM_LIMIT=${PHP_MEM_LIMIT:-"test_user"}
 
 bash /start.sh
