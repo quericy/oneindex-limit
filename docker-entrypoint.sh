@@ -15,5 +15,10 @@ if [ -z $DISABLE_CRON ];then
     crond
 fi
 
+# add write permission
+chmod -R 765 /var/www/html/cache /var/www/html/config
+
+# mock media ext rule
+sed -i 's#jpg|jpeg|gif|png|css|js|ico|webp|tiff|ttf|svg#xxx1xxx#g' /etc/nginx/sites-available/default.conf
 
 bash /start.sh
